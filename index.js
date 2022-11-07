@@ -29,7 +29,7 @@ app.use(xss());
 const connectDB = require('./api/db/connect');
 
 app.get('/', (req,res) => {
-  res.send('jobs api');
+  res.send('react-dash-api');
 })
 
 app.use(errorHandlerMiddleware);
