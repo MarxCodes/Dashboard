@@ -9,14 +9,7 @@ const fetchWeather = async(req, res) => {
   }
 
   const request = axios.get(url)
-    // .then(response => {
-    //   console.log(response);
-    //   let resJson = response.json()
-    //   console.log(resJson);
-    // })
-    // .catch(err => {
-    //   throw new Error(err);
-    // }) 
+
     return request;
 }
 

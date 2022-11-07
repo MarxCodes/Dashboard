@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
-// const { clothes } = require('../controllers/clothes');
-
 router.get('/', async (req,res) => {
   let clothesAPIURL = process.env.CLOTHING_API;
   try {

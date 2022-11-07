@@ -10,7 +10,6 @@ const authenticateUser = require('./middleware/authentication');
 const authRouter = require('./routes/auth');
 const newsRouter = require('./routes/news');
 const weatherRouter = require('./routes/weather');
-// const taskRouter = require();
 const clothesRouter = require('./routes/clothes');
 const searchRouter = require('./routes/searchTeam');
 const photoRouter = require('./routes/photos');

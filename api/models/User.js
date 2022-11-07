@@ -21,11 +21,7 @@ const UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, 'please provide password'],
-  },
-  // favourites: {
-  //   type: Array,
-  //   required: [false]
-  // }
+  }
 });
  
 UserSchema.pre('save', async function(next) {
