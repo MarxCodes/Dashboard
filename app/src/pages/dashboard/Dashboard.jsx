@@ -1,7 +1,6 @@
 import React, { useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import ReactDOM from 'react-dom';
 import { VictoryPie } from 'victory';
 import { TaskInput } from "../tasks/Task";
 
@@ -13,10 +12,10 @@ const NewsCard = ({newsData}) =>{
     backgroundColor: "greenyellow",
   }}>
     <Link to="/news">
-    <h1>News</h1>
+    <h1 >News</h1>
     </Link>
-    <h1>{newsData.title}</h1>
-    <pre>{newsData.pubDate}</pre>
+    <h1 style={{fontSize: '1rem'}}>{newsData.title}</h1>
+    <pre style={{fontSize: '15px', overflow: 'hidden'}}>{newsData.pubDate}</pre>
     <p>{newsData.content}</p>
   </div>
 )};
@@ -32,10 +31,6 @@ const AuthCard = () => (
     </Link>
   </div>
 );
-// const ClothesPieChart = data => (
-// )
-
-
 const ClothesCard = data => {
   let clothesCount = {};
   const pieArr = [];
@@ -144,16 +139,11 @@ const Weather = ({data}) => {
   </div>)
 }
 
-export default function Dashboard({sportData, newsData, taskData}) {
+export default function Dashboard({sportData, newsData, taskData }, name) {
+  console.log(name);
   const [currentWeather, setCurrentWeather ] = useState(null);
-  // const [currentNews, setCurrentNews] = useState(null);/
-  const [lat,setLat] = useState(null);
-  const [lng,setLng] = useState(null);
   const [position, setPosition] = useState(null);
   const [clothes, setClothes] = useState();
-  const [clothesdata, setClothesData ] = useState(null);
-
-
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       let lat = position.coords.latitude;
@@ -161,7 +151,6 @@ export default function Dashboard({sportData, newsData, taskData}) {
       getWeathers(lat,lng);
       getClothes();
     })
-
   }, [])
 
   const getWeathers = async (lat,lng) => {
@@ -175,31 +164,11 @@ export default function Dashboard({sportData, newsData, taskData}) {
     const clothesFetch = await axios.get(URL);
     let payload = clothesFetch.data.payload;
     setClothes(payload);
-    // console.log('initial clothes: ', clothes)
-    // mapClothes()
   }
-  // const mapClothes = () => {
-  //   let clothesCount = {};
-  //   console.log(clothes);
-
-  //   for(const num of clothes) {
-  //     clothesCount[num.clothe] = clothesCount[num.clothe] ? clothesCount[num.clothe] + 1 : 1;
-  //   }
-  //   setClothesData(clothesCount);
-  //   console.log(clothesCount);
-  //   pieDataManip()
-  // }
-
-  // const pieDataManip = () => {
-  //   for(const [key,value] of Object.entries(clothesdata)){
-  //     pieArr.push({x: key, y: value})
-  //   }
-  //   return pieArr
-  // }
 
   return (
     <div className="wrapper" style={{display: 'flex', flexWrap: 'wrap', justifyContent: "center", alignItems: "center"}}>
-
+    <h1>Welcome { localStorage.getItem('name')}</h1>
     {currentWeather && <Weather data={currentWeather}/>}
     {newsData && <NewsCard newsData={newsData} />}
     <div className="card-wrap">

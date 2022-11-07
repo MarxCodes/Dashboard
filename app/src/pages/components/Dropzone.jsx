@@ -1,7 +1,7 @@
 import React from "react";
 import { useDropzone } from "react-dropzone";
 
-const DropZonely = ({onDrop, accept}: {onDrop: () => void, accept: string}) => {
+const DropZonely = ({onDrop, accept}) => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept

@@ -10,15 +10,12 @@ const withRouter = (Component) => {
 
     const navigate = useNavigate();
     return (
-      <Component navigate={'/dashboard'} {...props}/>
+      <Component navigate={navigate} {...props}/>
       )
     }
     return Wrapper;
 }
-// export function withNavigate(props) {
-//   // let navigate = useNavigate();
-//   return <Dashboard {...props}/>
-// }
+
 class Auth extends React.Component {
 
   constructor(props) {
@@ -29,45 +26,29 @@ class Auth extends React.Component {
   setLocalStorage(resObj) {
     const expires = moment().add(1, 'days');
     localStorage.setItem('token', `Bearer ${resObj.token}`);
-    localStorage.setItem('expires', JSON.stringify(expires.valueOf()))
+    localStorage.setItem('expires', JSON.stringify(expires.valueOf()));
+    localStorage.setItem('name', resObj.user.name);
   }
-  async handleSubmit(values, actions) {
-    console.log('username: ', values)
-    const url = '//localhost:3000/api/v1/auth/register';
-    let response = fetch(url, { 
-      email: values.email,
-      password: values.password,
-      name: values.name
-     }, 
-      {headers: { 'Content-Type': 'application/json'}})
-//     let response = await fetch(url, {method: 'POST',       {header: { 'Content-Type': 'application/json'},
-//        withCredentials: true}}  { values }, 
-// )
-    // try {
-      // const response = await axios.post(url, values,{
-      //   header: { 'Content-Type': 'application/json'},
-      //   withCredentials: true
-      // });
-      // response
-      console.log(response.data);
-      this.props.navigate("/dashboard")
 
-    // } catch(error) {
-    //   console.log(error)
-    // }
-    // return new Promise((resolve, reject) => {
-    //   //call api to login 
-    //   setTimeout(() => {
-    //     resolve();
-    //     this.props.navigate("/dashboard")
-    //   }, 2000)
-    // })
+  async handleSubmit(values, actions) {
+    const url = 'https://react-dash-ts-11-22.herokuapp.com/api/v1/auth/register';
+    try {
+
+      let response = await axios.post(url, { 
+        email: values.email,
+        password: values.password,
+        name: values.name
+      }, 
+      {headers: { 'Content-Type': 'application/json'}})
+      this.props.navigate("/dashboard");
+      this.setLocalStorage(response.data)
+    } catch(err) {
+      console.error(err);
+    }
   }
 
   handleValidation(values) {
     const errors = { };
-
-    console.log(values)
     if(!values.email) {
       errors.email = "Email cannot be empty";
     }

@@ -1,31 +1,28 @@
 import React, { useRef,useState } from "react";
 
-interface InputProps {
-  text: string
-}
+// interface InputProps {
+//   text: string
+// }
 
-interface InputData { 
-  text:string
-}
+// interface InputData { 
+//   text:string
+// }
 const TaskCheckbox = () =>  (
     <div className="checkbox-conta">
       <input defaultChecked={false} type="checkbox" name="" id="" />
     </div>
   )
 
-const TaskInput = (props: InputProps) =>  {
+const TaskInput = (props) =>  {
   const inputRef = useRef<HTMLInputElement>(null);
   let [inputVal, setInputVal] = useState(props.text);
-  // inputVal = props.text;
-  const focusBorder = (event: React.FocusEvent) => {
+  const focusBorder = (event) => {
     inputRef.current?.focus();
   };
   
-  const handleSubmit = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    // const enteredValue = event.target.value;
     setInputVal(event.target.value)
-    // setInputVal({inputVal :enteredValue}) 
   }
 
   return (
@@ -49,6 +46,3 @@ const TaskInput = (props: InputProps) =>  {
 
 
 export default TaskInput;
-
-// TO-DO
-// 

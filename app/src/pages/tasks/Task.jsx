@@ -1,25 +1,20 @@
 import React, {useState} from "react";
-import { Link } from "react-router-dom";
-// import TaskInput from "../components/TaskInput";
-// import TestTasky from "../components/TestTask";
-// import TaskInputty from "../components/TaskInputs";
-interface InputProps {
-  text: string
-}
 
-interface InputData { 
-  text:string
-}
+
 const TaskCheckbox = () =>  (
     <div className="checkbox-container">
       <input defaultChecked={false} type="checkbox" name="" id="" />
     </div>
   )
 
-export const TaskInput = (props: InputProps) => {
-  // const inputRef = useRef<HTMLInputElement>(null);
+const taskTests = [
+  {text: 'primary test task'},
+  {text: 'secondary test task'},
+  {text: 'final test task'}
+]
+export const TaskInput = (props) => {
   let [inputVal, setInputVal] = useState(props.text);
-  const handleSubmit = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     setInputVal(event.target.value)
   }
@@ -66,16 +61,20 @@ const [tasks, setTasks] = useState(taskTests);
   )
 }
 
-// const taskTests = [
-//   'primary test task',
-//   'secondary test task',
-//   'final test task'
-// ]
 
-const taskTests = [
-  {text: 'primary test task'},
-  {text: 'secondary test task'},
-  {text: 'final test task'}
-]
 
 export default {Tasks, TaskInput}
+
+// interface InputProps {
+//   text: string
+// }
+
+// interface InputData { 
+//   text:string
+// }
+// export const TaskInput = (props: InputProps) => {
+//   let [inputVal, setInputVal] = useState(props.text);
+//   const handleSubmit = (event: React.ChangeEvent<HTMLInputElement>) => {
+//     event.preventDefault();
+//     setInputVal(event.target.value)
+//   }

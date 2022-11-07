@@ -26,28 +26,12 @@ const taskTests = [
 //   user: object
 // }
 
-function isLoggedIn() {
-  return moment().isBefore(getExpiration());
-}
-function getExpiration() {
-  const expiration = localStorage.getItem("expires");
-  const expiresAt = JSON.parse(expiration || '{}');
-  return moment(expiresAt)
-
-}
-function setLocalStorage(resObj) {
-  const expires = moment().add(1, 'days');
-  localStorage.setItem('token', `Bearer ${resObj.token}`);
-  localStorage.setItem('expires', JSON.stringify(expires.valueOf()))
-}
 // interface MatchFixture {
 //   HomeTeam: string,
 //   AwayTeam: string,
 //   FTR: 'A' | 'H' | 'D'
 // }
 function App() {
-  //weather
-  // const [currentWeather, setCurrentWeather ] = useState(null);
   //news
   const [currentNews, setCurrentNews] = useState(null);
   const [news,setNews] = useState([]);
@@ -62,7 +46,6 @@ function App() {
   const [league, setLeague] = useState([]);
   const [team,setTeam ] = useState('');
   const [winner, setWinner] = useState([]);
-
   const fetchSports = async (url) => {
     let URL = 'https://react-dash-ts-11-22.herokuapp.com/api/v1/search';
     let response = await axios.post(URL, { HomeTeam: 'Juventus'})
@@ -81,7 +64,8 @@ function App() {
   return (
     <div className="App">
       <Routes>
-      <Route path='/' element={<Dashboard sportData={league} taskData={tasks} newsData={news}/>} />
+      <Route path='/' element={<Auth/>} />
+      <Route path='/dashboard' element={<Dashboard sportData={league} taskData={tasks} newsData={news} />} />
       <Route path='/photos' element={<Photo/>} />
       <Route path='/news' element={<News newsData={news}/>} />
       <Route path='/tasks' element={<Tasks taskData={tasks}/>} />

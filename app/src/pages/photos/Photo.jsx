@@ -1,47 +1,8 @@
-import React, { DragEvent, DragEventHandler, useState , useCallback} from "react";
-import { Link } from "react-router-dom";
+import React, { useState , useCallback} from "react";
 import DropZonely from "../components/Dropzone";
 import ImageList from "../components/ImageList";
 
-//
 
-
-// const dragEnter = (e: DragEvent<HTMLInputElement>) => {
-
-//   e.preventDefault();
-//   console.log('enters');
-
-// }
-  //add outline class 
-
-
-// const dropped: DragEventHandler<HTMLInputElement> = (e) => {
-//   e.preventDefault();
-//   console.log('mic DROP');
-
-//   //add outline class 
-// }
-const onDrop = () => {};
-// const DropzoneCard = () => (
-//   <div className="wrapper" 
-
-//   style={{
-//     display: "flex",
-//     justifyContent: "center",
-//     alignItems: "center",
-//     backgroundColor: "#34495E",
-//     borderRadius: "14px"
-//   }}>
-//     <input 
-//       type="file"   
-//       onDragEnter={dragEnter}
-//       onDrop={dropped} 
-//       name="" 
-//       id="" 
-//       style={{width: "100%", height: "100%"}}/>
-//     <h1>+</h1>
-//   </div>
-// ) 
 
 export default function Photo() {
   const [images, setImages] = useState([]);
@@ -106,4 +67,36 @@ export default function Photo() {
       </div>
     </div>
   )
+  // const dragEnter = (e: DragEvent<HTMLInputElement>) => {
+  //   e.preventDefault();
+  //   console.log('enters');
+  // }
+    //add outline class 
+  // const dropped: DragEventHandler<HTMLInputElement> = (e) => {
+  //   e.preventDefault();
+  //   console.log('mic DROP');
+  
+  //   //add outline class 
+  // }
+  // const onDrop = () => {};
+  // const DropzoneCard = () => (
+  //   <div className="wrapper" 
+  
+  //   style={{
+  //     display: "flex",
+  //     justifyContent: "center",
+  //     alignItems: "center",
+  //     backgroundColor: "#34495E",
+  //     borderRadius: "14px"
+  //   }}>
+  //     <input 
+  //       type="file"   
+  //       onDragEnter={dragEnter}
+  //       onDrop={dropped} 
+  //       name="" 
+  //       id="" 
+  //       style={{width: "100%", height: "100%"}}/>
+  //     <h1>+</h1>
+  //   </div>
+  // ) 
 }
