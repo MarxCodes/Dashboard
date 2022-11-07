@@ -12,7 +12,7 @@ export default function Sports() {
   const [winner, setWinner] = useState([]);
 
   const fetchSports = async (url) => {
-    let URL = '//localhost:3000/api/v1/search';
+    let URL = 'https://react-dash-ts-11-22.herokuapp.com/api/v1/search';
     setTeam(url[0])
     let response = await axios.post(URL, { HomeTeam: url[0]})
     setLeague(response.data)

@@ -32,12 +32,14 @@ class Auth extends React.Component {
     localStorage.setItem('expires', JSON.stringify(expires.valueOf()))
   }
   async handleSubmit(values, actions) {
-    const url = 'https://react-dash-node-js.herokuapp.com/api/v1/auth/register';
+    const url = 'https://localhost:3000/api/v1/auth/register';
     // console.log(JSON.stringify(values))
     let response = await axios.post(url, { values }, 
-      {header: { 'Content-Type': 'application/json'},
+      {headers: { 'Content-Type': 'application/json'},
        withCredentials: true})
-
+//     let response = await fetch(url, {method: 'POST',       {header: { 'Content-Type': 'application/json'},
+//        withCredentials: true}}  { values }, 
+// )
     // try {
       // const response = await axios.post(url, values,{
       //   header: { 'Content-Type': 'application/json'},

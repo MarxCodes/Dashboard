@@ -165,13 +165,13 @@ export default function Dashboard({sportData, newsData, taskData}) {
   }, [])
 
   const getWeathers = async (lat,lng) => {
-    let URL = '//localhost:3000/api/v1/weather';
+    let URL = 'https://react-dash-ts-11-22.herokuapp.com/api/v1/weather';
     const currentWeatherFetch = await axios.post(URL,{lat,lng});
     setCurrentWeather(currentWeatherFetch)
     return currentWeatherFetch
   }
   const getClothes = async () => {
-    let URL = '//localhost:3000/api/v1/clothes';
+    let URL = 'https://react-dash-ts-11-22.herokuapp.com/api/v1/clothes';
     const clothesFetch = await axios.get(URL);
     let payload = clothesFetch.data.payload;
     setClothes(payload);

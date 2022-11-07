@@ -64,13 +64,13 @@ function App() {
   const [winner, setWinner] = useState([]);
 
   const fetchSports = async (url) => {
-    let URL = '//localhost:3000/api/v1/search';
+    let URL = 'https://react-dash-ts-11-22.herokuapp.com/api/v1/search';
     let response = await axios.post(URL, { HomeTeam: 'Juventus'})
     setLeague(response.data)
   } 
   //news 
   const fetchNews = async () => {
-    let URL = '//localhost:3000/api/v1/news';
+    let URL = 'https://react-dash-ts-11-22.herokuapp.com/api/v1/news';
     let response = await axios.get(URL);
     setNews(response.data);
   }
