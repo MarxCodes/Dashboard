@@ -6,15 +6,15 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const cors = require('cors');
 const xss = require('xss-clean');
-const authenticateUser = require('./middleware/authentication');
-const authRouter = require('./routes/auth');
-const newsRouter = require('./routes/news');
-const weatherRouter = require('./routes/weather');
-const clothesRouter = require('./routes/clothes');
-const searchRouter = require('./routes/searchTeam');
-const photoRouter = require('./routes/photos');
-const notFoundMiddleware = require('./middleware/not-found');
-const errorHandlerMiddleware = require('./middleware/error-handler');
+const authenticateUser = require('./api/middleware/authentication');
+const authRouter = require('./api/routes/auth');
+const newsRouter = require('./api/routes/news');
+const weatherRouter = require('./api/routes/weather');
+const clothesRouter = require('./api/routes/clothes');
+const searchRouter = require('./api/routes/searchTeam');
+const photoRouter = require('./api/routes/photos');
+const notFoundMiddleware = require('./api/middleware/not-found');
+const errorHandlerMiddleware = require('./api/middleware/error-handler');
 
 app.use(express.json());
 app.set('trust proxy', 1);
@@ -26,7 +26,7 @@ app.use(helmet());
 app.use(cors());
 app.use(xss());
 
-const connectDB = require('./db/connect');
+const connectDB = require('./api/db/connect');
 
 app.get('/', (req,res) => {
   res.send('jobs api');
