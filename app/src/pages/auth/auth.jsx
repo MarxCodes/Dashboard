@@ -33,7 +33,7 @@ class Auth extends React.Component {
   }
   async handleSubmit(values, actions) {
     console.log('username: ', values)
-    const url = 'https://localhost:3000/api/v1/auth/register';
+    const url = '//localhost:3000/api/v1/auth/register';
     let response = await axios.post(url, { 
       email: values.email,
       password: values.password,
