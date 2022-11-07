@@ -31,11 +31,11 @@ class Auth extends React.Component {
     localStorage.setItem('token', `Bearer ${resObj.token}`);
     localStorage.setItem('expires', JSON.stringify(expires.valueOf()))
   }
-  async handleSubmit({values}, actions) {
+  async handleSubmit(values, actions) {
+    console.log('username: ', values)
     const url = 'https://localhost:3000/api/v1/auth/register';
-    console.log('username: ', values.username)
     let response = await axios.post(url, { 
-      email: values.username,
+      email: values.email,
       password: values.password,
       name: values.name
      }, 
