@@ -34,13 +34,12 @@ class Auth extends React.Component {
   async handleSubmit(values, actions) {
     console.log('username: ', values)
     const url = '//localhost:3000/api/v1/auth/register';
-    let response = await axios.post(url, { 
+    let response = fetch(url, { 
       email: values.email,
       password: values.password,
       name: values.name
      }, 
-      {headers: { 'Content-Type': 'application/json'},
-       withCredentials: true})
+      {headers: { 'Content-Type': 'application/json'}})
 //     let response = await fetch(url, {method: 'POST',       {header: { 'Content-Type': 'application/json'},
 //        withCredentials: true}}  { values }, 
 // )
